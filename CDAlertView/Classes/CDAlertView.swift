@@ -68,6 +68,18 @@ open class CDAlertView: UIView {
                                                      blue: 53/255,
                                                      alpha: 1)
 
+    public var titleAttributedText: NSAttributedString = NSAttributedString() {
+        didSet {
+            titleLabel.attributedText = titleAttributedText
+        }
+    }
+    
+    public var messageAttributedText: NSAttributedString = NSAttributedString() {
+        didSet {
+            messageLabel.attributedText = messageAttributedText
+        }
+    }
+    
     public var titleFont: UIFont = UIFont.boldSystemFont(ofSize: 17) {
         didSet {
             titleLabel.font = titleFont
