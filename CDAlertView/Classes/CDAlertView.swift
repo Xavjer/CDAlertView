@@ -259,6 +259,12 @@ open class CDAlertView: UIView {
                             message: String?,
                             type: CDAlertViewType? = nil) {
         self.init(frame: .zero)
+        
+        //Set default values here so they can be overridden by attributedStrings
+        titleLabel.font = titleFont
+        titleLabel.textColor = titleTextColor
+        messageLabel.font = messageFont
+        messageLabel.textColor = messageTextColor
 
         self.type = type
         backgroundColor = UIColor(red: 50/255, green: 51/255, blue: 53/255, alpha: 0.4)
@@ -271,12 +277,29 @@ open class CDAlertView: UIView {
         }
 
         self.type = type
+    }
+    public convenience init(title: NSAttributedString?,
+                            message: NSAttributedString?,
+                            type: CDAlertViewType? = nil) {
+        self.init(frame: .zero)
         
         //Set default values here so they can be overridden by attributedStrings
         titleLabel.font = titleFont
         titleLabel.textColor = titleTextColor
         messageLabel.font = messageFont
         messageLabel.textColor = messageTextColor
+        
+        self.type = type
+        backgroundColor = UIColor(red: 50/255, green: 51/255, blue: 53/255, alpha: 0.4)
+        if let t = title {
+            titleLabel.attributedText = t
+        }
+        
+        if let m = message {
+            messageLabel.attributedText = m
+        }
+        
+        self.type = type
     }
 
     override open func layoutSubviews() {
