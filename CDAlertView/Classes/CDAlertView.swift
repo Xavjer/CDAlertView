@@ -56,12 +56,20 @@ open class CDAlertView: UIView {
     public var titleTextColor: UIColor = UIColor(red: 50/255,
                                                  green: 51/255,
                                                  blue: 53/255,
-                                                 alpha: 1)
+                                                 alpha: 1) {
+        didSet {
+            titleLabel.textColor = titleTextColor
+        }
+    }
 
     public var messageTextColor: UIColor = UIColor(red: 50/255,
                                                    green: 51/255,
                                                    blue: 53/255,
-                                                   alpha: 1)
+                                                   alpha: 1) {
+        didSet {
+            messageLabel.textColor = messageTextColor
+        }
+    }
 
     public var textFieldTextColor: UIColor = UIColor(red: 50/255,
                                                      green: 51/255,
@@ -263,6 +271,12 @@ open class CDAlertView: UIView {
         }
 
         self.type = type
+        
+        //Set default values here so they can be overridden by attributedStrings
+        titleLabel.font = titleFont
+        titleLabel.textColor = titleTextColor
+        messageLabel.font = messageFont
+        messageLabel.textColor = messageTextColor
     }
 
     override open func layoutSubviews() {
@@ -563,14 +577,12 @@ open class CDAlertView: UIView {
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .center
         titleLabel.setMaxHeight(100)
-        titleLabel.textColor = titleTextColor
         contentStackView.addArrangedSubview(titleLabel)
     }
 
     private func createMessageLabel() {
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
-        messageLabel.textColor = messageTextColor
         messageLabel.setMaxHeight(290)
         contentStackView.addArrangedSubview(messageLabel)
     }
