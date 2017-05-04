@@ -564,7 +564,6 @@ open class CDAlertView: UIView {
         titleLabel.textAlignment = .center
         titleLabel.setMaxHeight(100)
         titleLabel.textColor = titleTextColor
-        titleLabel.font = titleFont
         contentStackView.addArrangedSubview(titleLabel)
     }
 
@@ -573,7 +572,6 @@ open class CDAlertView: UIView {
         messageLabel.textAlignment = .center
         messageLabel.textColor = messageTextColor
         messageLabel.setMaxHeight(290)
-        messageLabel.font = messageFont
         contentStackView.addArrangedSubview(messageLabel)
     }
 
